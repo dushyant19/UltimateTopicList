@@ -60,6 +60,7 @@ class TopicsList(ListAPIView):
 
     def get(self,request):
         queryset = self.filter_queryset(self.get_queryset())
+        #print(queryset)
         return Response(TopicListSerializer(queryset).data)
     
 
