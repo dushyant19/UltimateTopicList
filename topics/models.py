@@ -1,10 +1,14 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 
 class Category(models.Model):
     title = models.CharField(max_length=256,blank=True,null=True)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ["-created_at"]
+
     def __str__(self):
         return self.title
 
@@ -13,6 +17,10 @@ class Topic(models.Model):
     difficulty = models.IntegerField(default=0)
     category = models.ForeignKey(Category,related_name='topics',on_delete=models.CASCADE,null=True)
     
+    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ["-created_at"]
+
     def __str__(self) :
         return self.title
 
