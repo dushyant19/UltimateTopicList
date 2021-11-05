@@ -56,3 +56,11 @@ class TopicNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ['title']
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Feedback
+        fields = ['title','feedback','created_at']
+

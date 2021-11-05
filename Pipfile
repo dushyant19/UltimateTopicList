@@ -10,6 +10,10 @@ beautifulsoup4 = "*"
 django-rest-framework = "*"
 django-filter = "*"
 django-cors-headers = "*"
+psycopg2-binary = "*"
+django-extensions = "*"
+djoser = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 

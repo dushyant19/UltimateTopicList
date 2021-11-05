@@ -10,6 +10,7 @@ admin.site.register(Problem)
 admin.site.register(Resource)
 admin.site.register(Template)
 admin.site.register(Category)
+admin.site.register(Feedback)
 
 
 # Register your models here.

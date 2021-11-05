@@ -1,11 +1,11 @@
 from typing import List
-from topics.serializers import CategorySerializer, TopicNameSerializer, TopicSerializer, TopicListSerializer
+from topics.serializers import CategorySerializer, FeedbackSerializer, TopicNameSerializer, TopicSerializer, TopicListSerializer
 from django.db.models.fields import CommaSeparatedIntegerField
 from django.shortcuts import render
 from django.http import HttpResponse
 # from .scrap import Ultimate_list
-from .models import Topic,Resource,Problem,Template,Category
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from .models import Topic,Resource,Problem,Template,Category,Feedback
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
@@ -71,4 +71,8 @@ class TopicNameView(ListAPIView):
     filter_backends = [SearchFilter]
     search_fields=['title']
     
+
+class FeedbackCreateView(CreateAPIView):
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all()
 
