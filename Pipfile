@@ -16,6 +16,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 dj-database-url = "*"
 gunicorn = "*"
+pytz = "*"
 
 [dev-packages]
 
