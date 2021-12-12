@@ -15,6 +15,7 @@ django-extensions = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
 dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 
