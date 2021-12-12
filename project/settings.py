@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -100,6 +101,7 @@ DATABASES = {
         'PASSWORD': 'test1234'
     }
 }
+DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
@@ -153,7 +155,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 from datetime import timedelta
 SIMPLE_JWT = {
-  'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+  'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
   'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
   'ROTATE_REFRESH_TOKENS': False,
   'BLACKLIST_AFTER_ROTATION': True,
@@ -198,6 +200,8 @@ EMAIL_HOST_USER='dakshchhabra158@gmail.com'
 EMAIL_HOST_PASSWORD='qadvvnbxuwtyohgl'
 EMAIL_USE_TLS = True
 
+DOMAIN = "localhost:3000"
+SITE_NAME = "localhost:3000"
 
 #Djoser
 DJOSER = {
@@ -206,11 +210,11 @@ DJOSER = {
     'USERNAME_CHANGED_EMAIL_CONFIRMATION':True,
     'SEND_ACTIVATION_EMAIL':True,
     'SEND_CONFIRMATION_EMAIL':True,
-    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
     'LOGOUT_ON_PASSWORD_CHANGE':True,
 
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'username/reset/confirm/{uid}/{token}',
 
     'SERIALIZERS': {
         'user_create':'accounts.serializers.UserCreateSerializer',
@@ -218,3 +222,5 @@ DJOSER = {
         'user_delete':'accounts.api.serializers.UserDeleteSerializer'
     },
 }
+
+

@@ -14,6 +14,7 @@ psycopg2-binary = "*"
 django-extensions = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

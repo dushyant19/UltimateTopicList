@@ -25,9 +25,10 @@ class TopicSerializer(serializers.ModelSerializer):
     resources = ResourceSerializer(many=True)
     templates = TemplateSerializer(many=True)
     problems = ProblemSerializer(many=True)
+    solved = serializers.BooleanField(default=False)
     class Meta:
         model = Topic
-        fields = ['id','title','difficulty','resources','templates','problems']
+        fields = ['id', 'title', 'difficulty', 'resources', 'templates', 'problems', 'solved']
     
 
 class TopicListSerializer(serializers.ListSerializer):
@@ -37,7 +38,7 @@ class TopicListSerializer(serializers.ListSerializer):
         return [
             {
                 'title':category.title,
-                'topics':TopicSerializer(iterable.filter(category=category),many=True).data
+                'topics':TopicSerializer(iterable.filter(category__pk=category.pk),many=True).data
             }
             for category in Category.objects.all().order_by("created_at")
         ]

@@ -1,10 +1,12 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager, User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from topics.models import Topic
+from djoser.signals import user_activated
 
 
 class CustomUserManager(BaseUserManager):
@@ -50,5 +52,17 @@ class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser,related_name='profile',on_delete=models.CASCADE)
     full_name = models.CharField(max_length=256,blank=True,null=True)
 
+    solved_topics = models.ManyToManyField(Topic, related_name='users', blank=True)
+
     def __str__(self):
-        return self.full_name
+        return self.user.email
+
+
+@receiver(user_activated)
+def my_handler(user, request, **kwargs):
+    UserProfile.objects.create(user=user)
+
+# @receiver(user_activated, sender=CustomUser)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserProfile.objects.create(user=instance)
