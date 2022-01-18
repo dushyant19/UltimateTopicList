@@ -148,7 +148,9 @@ CORS_ORIGIN_WHITELIST = [
     'http://google.com',
     'http://hostname.example.com',
     'http://localhost:3000',
-    'http://127.0.0.1:9000'
+    'http://127.0.0.1:9000',
+    'https://ultimatetopiclist.netlify.app',
+    'http://ultimatetopiclist.netlify.app'
 ]
 
 
@@ -208,8 +210,8 @@ EMAIL_HOST_USER='dakshchhabra158@gmail.com'
 EMAIL_HOST_PASSWORD='qadvvnbxuwtyohgl'
 EMAIL_USE_TLS = True
 
-DOMAIN = "localhost:3000"
-SITE_NAME = "localhost:3000"
+DOMAIN = "ultimatetopiclist.netlify.app"
+SITE_NAME = "ultimatetopiclist.netlify.app"
 
 #Djoser
 DJOSER = {
