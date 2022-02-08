@@ -15,7 +15,7 @@ import os
 import dj_database_url
 
 #Mode
-Mode = "LocalHost"
+Mode = "Production"
 Domain = "localhost:3000" if Mode == "LocalHost" else "ultimatetopiclist.netlify.app"
 
 
@@ -171,10 +171,10 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 from datetime import timedelta
 SIMPLE_JWT = {
     #change later
-  'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
-  'REFRESH_TOKEN_LIFETIME': timedelta(minutes=2),
+  'ACCESS_TOKEN_LIFETIME': timedelta(seconds=30),
+  'REFRESH_TOKEN_LIFETIME': timedelta(minutes=1),
   'ROTATE_REFRESH_TOKENS': False,
-  'BLACKLIST_AFTER_ROTATION': True,
+  'BLACKLIST_AFTER_ROTATION': False,
   'UPDATE_LAST_LOGIN': False,
 
   'ALGORITHM': 'HS256',
