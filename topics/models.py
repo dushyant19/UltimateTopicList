@@ -1,13 +1,16 @@
 from django.db import models
 from datetime import datetime
 
+from django.forms import IntegerField
+
 # Create your models here.
 
 class Category(models.Model):
     title = models.CharField(max_length=256,blank=True,null=True)
-    created_at = models.DateTimeField(auto_now=True)
+    # created_at = models.DateTimeField(auto_now=True)
+    rank = models.IntegerField(default=0)
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-rank"]
 
     def __str__(self):
         return self.title
@@ -17,9 +20,9 @@ class Topic(models.Model):
     difficulty = models.IntegerField(default=0)
     category = models.ForeignKey(Category,related_name='topics',on_delete=models.CASCADE,null=True)
     
-    created_at = models.DateTimeField(auto_now_add=True)
-    class Meta:
-        ordering = ["-created_at"]
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # class Meta:
+    #     ordering = ["-created_at"]
 
     def __str__(self) :
         return self.title
