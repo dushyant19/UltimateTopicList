@@ -40,7 +40,7 @@ class TopicListSerializer(serializers.ListSerializer):
                 'title':category.title,
                 'topics':TopicSerializer(iterable.filter(category__pk=category.pk),many=True).data
             }
-            for category in Category.objects.all().order_by("created_at")
+            for category in Category.objects.all().order_by("rank")
         ]
 
 
