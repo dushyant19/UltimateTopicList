@@ -1,3 +1,5 @@
+
+from __future__ import print_function
 from django.contrib.auth.models import AbstractUser, BaseUserManager, User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -7,6 +9,28 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from topics.models import Topic
 from djoser.signals import user_activated
+import time
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
+from pprint import pprint
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+configuration = sib_api_v3_sdk.Configuration()
+configuration.api_key['api-key'] = os.getenv('API_KEY')
+
+print(os.getenv('API_KEY'))
+
+api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
+subject = "from the Python SDK!"
+email_sender = {"name":"Zenitsu","email":"dakshchhabra158@gmail.com"}
+replyTo = {"name":"Zenitsu","email":"dakshchhabra158@gmail.com"}
+html_content = "<html><body><h1>Email Sent succesfully!! </h1></body></html>"
+
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -56,6 +80,12 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.email
+
+
+
+
+
+
 
 
 @receiver(user_activated)

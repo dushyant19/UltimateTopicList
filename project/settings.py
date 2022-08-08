@@ -14,8 +14,12 @@ from pathlib import Path
 import os
 import dj_database_url
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 #Mode
-Mode = "Production"
+Mode = "LocalHost"
 Domain = "localhost:3000" if Mode == "LocalHost" else "ultimatetopiclist.netlify.app"
 
 
@@ -51,6 +55,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_extensions',
     'djoser',
+    'anymail'
 ]
 
 REST_FRAMEWORK = {
@@ -114,7 +119,7 @@ DATABASES = {
         'PASSWORD': 'test1234'
     }
 }
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
@@ -157,6 +162,11 @@ CORS_ORIGIN_WHITELIST = [
     'https://ultimatetopiclist.netlify.app',
     'http://ultimatetopiclist.netlify.app'
 ]
+
+# Anymail configuration
+ANYMAIL = {
+    "SENDINBLUE_API_KEY": os.getenv('API_KEY'),
+}
 
 
 # Static files (CSS, JavaScript, Images)
@@ -209,11 +219,9 @@ SIMPLE_JWT = {
 
 
 #Email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER='dakshchhabra158@gmail.com'
-EMAIL_HOST_PASSWORD='qadvvnbxuwtyohgl'
 EMAIL_USE_TLS = True
 
 

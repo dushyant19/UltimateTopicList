@@ -17,6 +17,9 @@ djangorestframework-simplejwt = "*"
 dj-database-url = "*"
 gunicorn = "*"
 pytz = "*"
+sib-api-v3-sdk = {git = "https://github.com/sendinblue/APIv3-python-library.git"}
+python-dotenv = "*"
+django-anymail = {extras = ["sendinblue"], version = "*"}
 
 [dev-packages]
 
