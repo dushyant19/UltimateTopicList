@@ -19,8 +19,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Mode
-Mode = "LocalHost"
-Domain = "localhost:3000" if Mode == "LocalHost" else "ultimatetopiclist.netlify.app"
+Mode = "Production"
+Domain = "localhost:3000" if Mode == "LocalHost" else "zippy-biscuit-408a46.netlify.app"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

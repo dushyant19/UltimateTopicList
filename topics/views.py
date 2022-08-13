@@ -60,7 +60,7 @@ class TopicsList(GenericAPIView):
     #queryset = Topic.objects.all()
 
     filter_backends = [DjangoFilterBackend]
-    filter_fields = {
+    filterset_fields = {
         'difficulty': ["in", "exact"],
         'category__title': ["in", "exact"],
         'title': ["in", "exact"]
