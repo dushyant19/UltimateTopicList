@@ -20,7 +20,7 @@ load_dotenv()
 
 #Mode
 Mode = "Production"
-Domain = "localhost:3000" if Mode == "LocalHost" else "zippy-biscuit-408a46.netlify.app"
+Domain = "localhost:3000" if Mode == "LocalHost" else "ultimatetopiclist.netlify.app"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
