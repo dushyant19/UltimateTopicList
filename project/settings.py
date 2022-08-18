@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Mode
-Mode = "Production"
+Mode = "LocalHost"
 Domain = "localhost:3000" if Mode == "LocalHost" else "zippy-biscuit-408a46.netlify.app"
 
 
@@ -115,7 +115,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'UltimateTopicList',
-        'USER': 'postgres',
+        'USER': 'daksh',
         'PASSWORD': 'test1234'
     }
 }
