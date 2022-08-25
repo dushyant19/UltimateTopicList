@@ -19,8 +19,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Mode
-Mode = "LocalHost"
-Domain = "localhost:3000" if Mode == "LocalHost" else "zippy-biscuit-408a46.netlify.app"
+Mode = "Production"
+Domain = "localhost:3000" if Mode == "LocalHost" else "ultimatetopiclist.netlify.app"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,10 +116,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'UltimateTopicList',
         'USER': 'daksh',
-        'PASSWORD': 'test1234'
+        'PASSWORD': 'test1234',
+        'HOST':'db'
     }
 }
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
