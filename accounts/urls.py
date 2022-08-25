@@ -1,10 +1,11 @@
 from django.urls import path, include
-from .views import UserExistsCheck
+from .views import UserExistsCheck, AdminPageView
 
 urlpatterns = [
     path('',include('djoser.urls')),
     path('',include('djoser.urls.jwt')),
-    path('check/',UserExistsCheck.as_view(),name='user_check')
+    path('check/',UserExistsCheck.as_view(),name='user_check'),
+    path('users_list/',AdminPageView.as_view(),name='admin_page_view')
 ]
 
 

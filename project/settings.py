@@ -115,8 +115,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'UltimateTopicList',
-        'USER': 'postgres',
-        'PASSWORD': 'test1234'
+        'USER': 'daksh',
+        'PASSWORD': 'test1234',
+        'HOST':'db'
     }
 }
 DATABASES['default'] = dj_database_url.config()
