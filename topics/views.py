@@ -171,3 +171,5 @@ class ToggleSolvedView(APIView):
 
         return JsonResponse({"Message": "Successful"})
 
+
+# The comment is for testing purpose only
